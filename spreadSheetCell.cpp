@@ -11,7 +11,7 @@ void SpreadSheetCell::setStringValue(const std::string& val) {
 int SpreadSheetCell::getIntValue() const {
   std::stringstream ss;
   ss << m_value;
-  int value ;
+  int value;
   ss >> value;
   return value;
 }
@@ -23,7 +23,7 @@ std::string SpreadSheetCell::getStringValue() const {
 double SpreadSheetCell::getDoubleValue() const {
   std::stringstream ss;
   ss << m_value;
-  double value ;
+  double value;
   ss >> value;
   return value;
 }
