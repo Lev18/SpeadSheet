@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main() {
-   SpreadSheet st1(1,1);
+   SpreadSheet st1(1, 1);
   st1.addRow(1);
   st1.addColumn(1);
   st1.getCell(0,0).setStringValue("hell");
