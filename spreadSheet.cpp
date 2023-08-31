@@ -1,6 +1,6 @@
 #include "spreadSheet.h"
 
-#include<stdexcept>
+#include <stdexcept>
 #include <iostream>
 #include <string>
 
@@ -17,7 +17,7 @@ SpreadSheet::SpreadSheet(size_t row, size_t col )
 }
 
 SpreadSheet::~SpreadSheet() {
-  if(this->m_cells != nullptr){
+  if (this->m_cells != nullptr){
     for (size_t r = 0; r < m_row; ++r) {
       for (size_t c = 0; c < m_column; ++c) {
         delete m_cells[r][c]; 
@@ -36,7 +36,7 @@ void SpreadSheet::addRow(size_t newRows) {
   SpreadSheet tmp(row, m_column);
   for (size_t r = 0; r < m_row; ++r) {
     for (size_t c = 0; c < m_column; ++c) {
-      tmp.m_cells[r][c]->setStringValue( m_cells[r][c]->getStringValue());
+      tmp.m_cells[r][c]->setStringValue(m_cells[r][c]->getStringValue());
     }
   }
   m_row = row;
@@ -50,7 +50,7 @@ void SpreadSheet::addColumn(size_t newCols){
   SpreadSheet tmp(m_row, col);
   for (size_t r = 0; r < m_row; ++r) {
     for (size_t c = 0; c < m_column; ++c) {
-      tmp.m_cells[r][c]->setStringValue( m_cells[r][c]->getStringValue());
+      tmp.m_cells[r][c]->setStringValue(m_cells[r][c]->getStringValue());
     }
   }
   m_column = col;
@@ -60,7 +60,7 @@ void SpreadSheet::addColumn(size_t newCols){
 
 void SpreadSheet::removeRow(size_t rowNumber) {
 
-  if(rowNumber < 0 || rowNumber >= m_row) {
+  if (rowNumber < 0 || rowNumber >= m_row) {
     throw std::runtime_error("invalid argument: row out of range! ");
     std::exit(2);
   }
@@ -74,8 +74,8 @@ void SpreadSheet::removeRow(size_t rowNumber) {
   --m_row;
   SpreadSheetCell*** tmp = new SpreadSheetCell**[m_row];
   size_t i = 0, j = 0;
-  while(i < m_row) {
-    if(m_cells[j] == nullptr) {
+  while (i < m_row) {
+    if (m_cells[j] == nullptr) {
       ++j;
     }
     tmp[i] = m_cells[j];
@@ -87,7 +87,7 @@ void SpreadSheet::removeRow(size_t rowNumber) {
 }
 
 void SpreadSheet::removeColumn(size_t rowNumber) {
-  if(rowNumber < 0 || rowNumber >= m_row) {
+  if (rowNumber < 0 || rowNumber >= m_row) {
     throw std::runtime_error("invalid argument: row out of range! ");
     std::exit(2);
   }
@@ -102,7 +102,7 @@ void SpreadSheet::removeColumn(size_t rowNumber) {
  size_t k = 0;
   for (size_t i = 0; i < m_row; ++i) {
     for (size_t j = 0; j < m_column; ++j) {
-      if(m_cells[i][j] == nullptr) {
+      if (m_cells[i][j] == nullptr) {
         ++k;
       }
       tmp[i][j] = m_cells[i][k];
@@ -117,7 +117,7 @@ void SpreadSheet::removeColumn(size_t rowNumber) {
 void SpreadSheet::printCells() {
   for (size_t row = 0; row < m_row; ++row) {
     for (size_t col = 0; col < m_column; ++col) {
-      std::cout << m_cells[row][col]->getStringValue() << ' ';
+      std::cout << m_cells[row][col]->getStringValue() << "  ";
     }
     std::cout << '\n';
   }
@@ -128,7 +128,7 @@ void SpreadSheet::setCell(size_t row, size_t column, const std::string& value) {
 }
 
 SpreadSheetCell& SpreadSheet::getCell(size_t row, size_t column) {
-  if(row > m_row || column > m_column) {
+  if (row > m_row || column > m_column) {
     throw std::invalid_argument("Out of Sheet");
   }
   return *(m_cells[row][column]);
