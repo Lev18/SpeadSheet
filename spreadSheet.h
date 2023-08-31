@@ -6,9 +6,9 @@
 
 class SpreadSheet {
 private:
-  size_t m_row{0};
-  size_t m_column{0};
-  SpreadSheetCell*** m_cells {nullptr};
+  size_t m_row { 0 };
+  size_t m_column { 0 };
+  SpreadSheetCell*** m_cells { nullptr };
     
 public:
   SpreadSheet() = default;
